@@ -1,4 +1,4 @@
 from django.contrib import admin
-from books.models import Banner
+from books.models import Book
 
-admin.site.register(Banner)
+admin.site.register(Book)

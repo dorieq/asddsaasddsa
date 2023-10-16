@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    
     'books',
     'course',
     'news'
@@ -56,6 +61,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': timedelta(seconds=300),  
+    'JWT_ALLOW_REFRESH': True,  
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+}
 
 ROOT_URLCONF = 'deutcsh.urls'
 

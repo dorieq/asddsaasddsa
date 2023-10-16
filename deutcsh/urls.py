@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from account.views import register, custom_login, bitriks
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', custom_login),
+    path('register/', register),
+    path('bitriks/', bitriks),
 ]
